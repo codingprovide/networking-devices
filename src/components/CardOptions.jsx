@@ -1,39 +1,67 @@
-// eslint-disable-next-line react/prop-types
-export default function Options({ options }) {
+import clsx from "clsx";
+import useQuestionStore from "../store";
+
+export default function Options({ options, number, answer, isSubmit }) {
+  const setUserChoice = useQuestionStore((state) => state.setUserChoice);
+  const userChoices = useQuestionStore((state) => state.userChoices);
+
+  const handleUserChoice = (number, selectedOption, answer) => {
+    setUserChoice(number, selectedOption, answer);
+    console.log(userChoices);
+  };
+
+  const userSelection = userChoices[number]?.selectedOption;
+
   return (
     <ul
       className="p-3 space-y-1 text-sm text-gray-700 dark:text-gray-200"
       aria-labelledby="dropdownHelperRadioButton"
     >
-      {options.map((option, index) => (
-        <li key={index}>
-          <div className="flex p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-            <div className="flex items-center h-5">
-              <input
-                id={`helper-radio-${index}`}
-                name="helper-radio"
-                type="radio"
-                value={option.value}
-                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-              />
-            </div>
-            <div className="ms-2 text-sm">
-              <label
-                htmlFor={`helper-radio-${index}`}
-                className="font-medium text-gray-900 dark:text-gray-300"
-              >
-                <div>{option.label}</div>
-                <p
-                  id={`helper-radio-text-${index}`}
-                  className="text-xs font-normal text-gray-500 dark:text-gray-300"
+      {options.map((option, index) => {
+        return (
+          <li key={index}>
+            <div
+              className={clsx(
+                "flex px-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600",
+                {
+                  "bg-green-100 dark:bg-green-600":
+                    isSubmit && option.label === answer,
+                  "bg-red-100 dark:bg-red-600":
+                    isSubmit &&
+                    option.label === userSelection &&
+                    userSelection !== answer,
+                }
+              )}
+            >
+              <div className="flex items-center justify-center">
+                <input
+                  id={`helper-radio-${option.description}-${number}-${index}`}
+                  name={`helper-radio-${number}`}
+                  type="radio"
+                  value={option.label}
+                  onChange={() =>
+                    !isSubmit && handleUserChoice(number, option.label, answer)
+                  }
+                />
+              </div>
+              <div className="ms-2 text-xl w-full h-full">
+                <label
+                  htmlFor={`helper-radio-${option.description}-${number}-${index}`}
+                  className="font-medium text-gray-900 dark:text-gray-300 w-full h-full"
                 >
-                  {option.description}
-                </p>
-              </label>
+                  <div className=" text-yellow-200">{option.label}</div>
+                  <p
+                    id={`helper-radio-text-${index}`}
+                    className=" text-base font-normal text-gray-500 dark:text-gray-300"
+                  >
+                    {option.description}
+                  </p>
+                </label>
+              </div>
             </div>
-          </div>
-        </li>
-      ))}
+          </li>
+        );
+      })}
     </ul>
   );
 }
