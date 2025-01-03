@@ -9,16 +9,19 @@ export default function Card({
   options,
   answer,
   isSubmit,
+  topic,
+  index,
 }) {
   return (
     <CardLayout>
-      <QuestionNumber number={number} />
+      <QuestionNumber number={number} topic={topic} index={index} />
       <QuestionDescription description={description} />
       <Options
         options={options}
         number={number}
         answer={answer}
         isSubmit={isSubmit}
+        topic={topic}
       />
     </CardLayout>
   );
