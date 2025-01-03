@@ -541,3 +541,127 @@ export const chapter14Questions = [
     ],
   },
 ];
+
+export const chapter15Questions = [
+  {
+    number: 1,
+    topic: "第十五章 SMTP協定與POP3協定",
+    description: "小英想送郵件給大明,可使用 ___ 協定傳送出去。",
+    answer: 4,
+    options: [
+      { label: 1, description: "BOOTP" },
+      { label: 2, description: "NAT" },
+      { label: 3, description: "DCHP" },
+      { label: 4, description: "SMTP" },
+    ],
+  },
+  {
+    number: 2,
+    topic: "第十五章 SMTP協定與POP3協定",
+    description: "大明想從郵件伺服器內部之郵箱取出該郵件可使用 ___ 協定。",
+    answer: 3,
+    options: [
+      { label: 1, description: "SMTP" },
+      { label: 2, description: "NAT" },
+      { label: 3, description: "POP3" },
+      { label: 4, description: "DHCP" },
+    ],
+  },
+  {
+    number: 3,
+    topic: "第十五章 SMTP協定與POP3協定",
+    description: "SMTP 為應用層協定並使用 ___ 的傳輸服務。",
+    answer: 2,
+    options: [
+      { label: 1, description: "IP" },
+      { label: 2, description: "TCP" },
+      { label: 3, description: "UDP" },
+      { label: 4, description: "DHCP" },
+    ],
+  },
+  {
+    number: 4,
+    topic: "第十五章 SMTP協定與POP3協定",
+    description: "SMTP 採用 ___ 方式和 ___ 連接。",
+    answer: 1,
+    options: [
+      { label: 1, description: "內頻方式和持續性連接" },
+      { label: 2, description: "外頻方式和持續性連接" },
+      { label: 3, description: "外頻方式和非持續性連接" },
+      { label: 4, description: "內頻方式和非持續性連接" },
+    ],
+  },
+  {
+    number: 5,
+    topic: "第十五章 SMTP協定與POP3協定",
+    description: "IMAP 或 POP3 執行 ___ 動作。",
+    answer: 4,
+    options: [
+      { label: 1, description: "push" },
+      { label: 2, description: "upload" },
+      { label: 3, description: "download" },
+      { label: 4, description: "pull" },
+    ],
+  },
+  {
+    number: 6,
+    topic: "第十五章 SMTP協定與POP3協定",
+    description: "SMTP 執行 ___ 動作。",
+    answer: 1,
+    options: [
+      { label: 1, description: "push" },
+      { label: 2, description: "upload" },
+      { label: 3, description: "download" },
+      { label: 4, description: "pull" },
+    ],
+  },
+  {
+    number: 7,
+    topic: "第十五章 SMTP協定與POP3協定",
+    description:
+      "一旦小英寫好郵件,透過郵件讀取器將郵件轉交給___用戶端,透過網際網路,MTA 伺服端把郵件送出。",
+    answer: 2,
+    options: [
+      { label: 1, description: "UA" },
+      { label: 2, description: "MTA" },
+      { label: 3, description: "DCHP" },
+      { label: 4, description: "SMTP" },
+    ],
+  },
+  {
+    number: 8,
+    topic: "第十五章 SMTP協定與POP3協定",
+    description: "UA 代表什麼?",
+    answer: 1,
+    options: [
+      { label: 1, description: "執行使用者代理器" },
+      { label: 2, description: "郵件伺服器" },
+      { label: 3, description: "郵箱" },
+      { label: 4, description: "以上皆非" },
+    ],
+  },
+  {
+    number: 9,
+    topic: "第十五章 SMTP協定與POP3協定",
+    description: "用戶端和伺服端需要一對的郵件存取代理程式,稱為 ___。",
+    answer: 3,
+    options: [
+      { label: 1, description: "UA" },
+      { label: 2, description: "MTA" },
+      { label: 3, description: "MAA" },
+      { label: 4, description: "以上皆非" },
+    ],
+  },
+  {
+    number: 10,
+    topic: "第十五章 SMTP協定與POP3協定",
+    description: "當您想透過網頁瀏覽器來送收電子郵件(如 Hotmail),則用戶代理器至郵件伺服器之間是採用何種協定?",
+    answer: 2,
+    options: [
+      { label: 1, description: "BOOTP" },
+      { label: 2, description: "HTTP" },
+      { label: 3, description: "TCP" },
+      { label: 4, description: "SMTP" },
+    ],
+  },
+];
