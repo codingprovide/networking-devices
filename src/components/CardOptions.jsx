@@ -59,12 +59,12 @@ export default function Options({ options, number, answer, isSubmit, topic }) {
                   className="font-medium text-gray-900 dark:text-gray-300 w-full h-full"
                 >
                   <div>{option.label}</div>
-                  <p
+                  <div
                     id={`helper-radio-text-${index}`}
                     className=" text-base font-normal text-gray-500 dark:text-gray-300"
                   >
                     {option.description}
-                  </p>
+                  </div>
                 </label>
               </div>
             </div>

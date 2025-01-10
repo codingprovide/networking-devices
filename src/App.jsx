@@ -5,15 +5,19 @@ import {
   chapter11Questions,
   chapter14Questions,
   chapter15Questions,
+  linearAlgebraQuestion,
+  linearAlgebraQuestionAll,
 } from "./components/questions";
 import ChapterList from "./components/ChapterList";
 import { useQuestionStore } from "./store";
+import SubjectList from "./components/SubjectList";
 
 export default function App() {
   const resetChoices = useQuestionStore((state) => state.resetChoices);
   const [isSubmit, setIsSubmit] = useState(false);
-  const [isChangeTopic, setIsChangeTopic] = useState(true);
+  const [isChangeTopic, setIsChangeTopic] = useState(false);
   const [questions, setQuestions] = useState([]);
+  const [subject, setSubject] = useState(null);
   const handleSbumit = () => {
     setIsSubmit((prev) => !prev);
   };
@@ -48,15 +52,22 @@ export default function App() {
       ];
       shuffle(newQestions);
       setQuestions([...newQestions]);
+    } else if (chapter === "平時考") {
+      shuffle(linearAlgebraQuestion);
+      setQuestions([...linearAlgebraQuestion]);
+    } else if (chapter === "禮拜五模擬考") {
+      // shuffle(linearAlgebraQuestionAll);
+      setQuestions([...linearAlgebraQuestionAll]);
     }
     setIsChangeTopic((prev) => !prev);
   };
 
   const handleBackMenu = () => {
     setIsSubmit(false);
-    setIsChangeTopic(true);
+    setIsChangeTopic(false);
     setQuestions([]);
     resetChoices();
+    setSubject(null);
   };
 
   const chapters = [
@@ -67,15 +78,38 @@ export default function App() {
     "全部章節",
   ];
 
+  const linearAlgebraChapters = ["平時考", "禮拜五模擬考"];
+
+  const handleSelectSubject = (subject) => {
+    setSubject(subject);
+  };
+
+  const subjects = ["網路概論", "線性代數"];
+
   return (
     <div className=" container mx-auto p-2">
-      {isChangeTopic && (
+      {subject === null && (
+        <SubjectList
+          subjects={subjects}
+          handleSelectSubject={handleSelectSubject}
+        />
+      )}
+
+      {!isChangeTopic && subject === "網路概論" && (
         <ChapterList
           chapters={chapters}
           handleChangeTopic={handleChangeTopic}
         />
       )}
-      {!isChangeTopic && (
+
+      {!isChangeTopic && subject === "線性代數" && (
+        <ChapterList
+          chapters={linearAlgebraChapters}
+          handleChangeTopic={handleChangeTopic}
+        />
+      )}
+
+      {isChangeTopic && (
         <div className="mx-auto max-w-sm">
           {questions.map((question, index) => (
             <Card
